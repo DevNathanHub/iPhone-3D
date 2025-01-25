@@ -5,6 +5,7 @@ import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import CartContext from '../context/CartContext';
 import PayPalButton from './PayPalButton';
 import { useNavigate } from 'react-router-dom';
+import Policy from './Policy';
 
 export default function Checkout() {
   const context = useContext(CartContext);
@@ -113,8 +114,10 @@ export default function Checkout() {
               </button>
             </div>
           )}
-        </div>
+        </div> 
+        <Policy/>
       </div>
+     
     </div>
   );
 }

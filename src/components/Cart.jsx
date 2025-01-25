@@ -15,6 +15,14 @@ export default function Cart() {
   const handleCheckout = () => {
     navigate('/checkout')
   }
+  const goHome = () => {
+    navigate('/')
+  }
+
+  const totalAmount = cart.reduce(
+    (sum, product) => sum + product.quantity * parseFloat(product.price.slice(1)),
+    0
+  ).toFixed(2);
 
   return (
     <div>
@@ -31,7 +39,7 @@ export default function Cart() {
                   <div className="flex items-start justify-between">
                     <DialogTitle className="text-lg font-medium text-gray-900">Shopping cart</DialogTitle>
                     <div className="ml-3 flex h-7 items-center">
-                      <button type="button" onClick={() => setOpen(false)} className="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
+                      <button type="button" onClick={() => goHome()} className="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
                         <span className="absolute -inset-0.5" />
                         <span className="sr-only">Close panel</span>
                         <XMarkIcon aria-hidden="true" className="size-6" />
@@ -70,7 +78,7 @@ export default function Cart() {
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$122.00</p>
+                    <p>${totalAmount}</p>
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">
